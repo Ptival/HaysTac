@@ -30,8 +30,8 @@ Ltac _on_head flag type tactic :=
 
 (** [on_head type tac] finds a hypothesis [H] whose type starts with
     [type] and runs [tac H]. *)
-Ltac on_head flag := _on_head false.
+Ltac on_head := _on_head false.
 
 (** [on_head'] is the same as [on_head] but it outputs what hypothesis
     was used, for debugging purposes. *)
-Ltac on_head' flag := _on_head true.
+Ltac on_head' := _on_head true.
