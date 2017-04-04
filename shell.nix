@@ -7,6 +7,7 @@ nixpkgs.stdenv.mkDerivation {
     #coq-ext-lib
   ]));
   shellHook = ''
+    export NIXSHELL="$NIXSHELL\[HaysTac\]"
     export SSL_CERT_FILE="/etc/ssl/certs/ca-bundle.crt"
   '';
 }
