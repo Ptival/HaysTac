@@ -9,7 +9,7 @@ Ltac find_apply := bind enumerate_hypotheses in apply'.
 
 (** [find_apply_in H] looks for a hypothesis that can be [apply]-ed in
     [H] and performs the application. *)
-Ltac find_apply_in H := bind enumerate_hypotheses in (fun X => apply X in H).
+Ltac find_apply_in H := bind enumerate_hypotheses in ltac:(fun X => apply X in H).
 
 (** [check_hyp_mentions_all H tuple] returns [H] if its type mentions all
     the terms in nested tuple [tuple], fails otherwise. *)
