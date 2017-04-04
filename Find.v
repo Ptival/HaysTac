@@ -41,9 +41,3 @@ Ltac find_specialize_in H :=
   multimatch goal with
   | [ v : _ |- _ ] => specialize (H v)
   end.
-
-Ltac find_n_specializes_in n H :=
-  match n with
-  | 0 => idtac
-  | S ?n' => find_specialize_in H; find_n_specializes_in n' H
-  end.

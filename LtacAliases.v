@@ -13,3 +13,16 @@ Ltac lrewrite   H := rewrite <- H.
 Ltac rrewrite   H := rewrite -> H.
 Ltac simpl'     H := simpl in H.
 Ltac symmetry'  H := symmetry in H.
+
+(* [do'] and [repeat'] need a little extra care to be useful in
+   practice: *)
+
+Ltac do' n tac arg :=
+  match n with
+  | O => idtac
+  | S ?n' => tac arg ; do' n' tac arg
+  end.
+
+Ltac repeat' tac arg :=
+  progress tac arg; repeat' tac arg
+  || idtac.
