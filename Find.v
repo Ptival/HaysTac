@@ -11,6 +11,10 @@ Ltac find_apply := bind enumerate_hypotheses in apply'.
     [H] and performs the application. *)
 Ltac find_apply_in H := bind enumerate_hypotheses in ltac:(fun X => apply X in H).
 
+(** [apply_in_hyp L] looks for a hypothesis [H] in which [L] can be
+    [apply]-ed and performs the application. *)
+Ltac apply_in_hyp L := bind enumerate_hypotheses in ltac:(fun H => apply L in H).
+
 (** [check_hyp_mentions_all H tuple] returns [H] if its type mentions all
     the terms in nested tuple [tuple], fails otherwise. *)
 Ltac check_hyp_mentions_all H tuple :=
