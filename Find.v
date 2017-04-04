@@ -35,7 +35,8 @@ Ltac find_hyp_mentioning_all list :=
   let H := enumerate_hypotheses in
   check_hyp_mentions_all H list.
 
-(** [find_specialize_in H] *)
+(** [find_specialize_in H] looks for a value [v] such that is can
+    [specialize (H v)]. *)
 Ltac find_specialize_in H :=
   multimatch goal with
   | [ v : _ |- _ ] => specialize (H v)
