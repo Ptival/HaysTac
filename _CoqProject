@@ -1,4 +1,4 @@
--Q . HaysTac
+-R . HaysTac
 
 ./Bind.v
 ./Enumerate.v
@@ -11,3 +11,5 @@
 ./On.v
 ./Regression.v
 ./Subst.v
+
+./Lists/List.v
