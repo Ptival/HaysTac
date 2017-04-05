@@ -4,10 +4,12 @@ Set Implicit Arguments.
 
 Import ListNotations.
 
+Create HintDb List.
+
 Theorem Forall_cons_inv_tail T R (h : T) t : Forall R (h :: t) -> Forall R t.
 Proof. now inversion 1. Qed.
 
-Hint Resolve Forall_cons_inv_tail.
+Hint Resolve Forall_cons_inv_tail : List.
 
 Theorem Forall2_cons_inv_tail_l T1 T2 R (h1 : T1) t1 (l2 t2 : list T2) :
   t2 = tl l2 ->
@@ -15,7 +17,7 @@ Theorem Forall2_cons_inv_tail_l T1 T2 R (h1 : T1) t1 (l2 t2 : list T2) :
   Forall2 R t1 t2.
 Proof. inversion 2. now subst. Qed.
 
-Hint Resolve Forall2_cons_inv_tail_l.
+Hint Resolve Forall2_cons_inv_tail_l : List.
 
 Theorem Forall2_cons_inv_tail_r T1 T2 R (h2 : T2) (l1 t1 : list T1) t2 :
   t1 = tl l1 ->
@@ -23,10 +25,10 @@ Theorem Forall2_cons_inv_tail_r T1 T2 R (h2 : T2) (l1 t1 : list T1) t2 :
   Forall2 R t1 t2.
 Proof. inversion 2. now subst. Qed.
 
-Hint Resolve Forall2_cons_inv_tail_r.
+Hint Resolve Forall2_cons_inv_tail_r : List.
 
 Theorem Forall2_cons_inv_tail T R (h1 h2 : T) t1 t2 :
   Forall2 R (h1 :: t1) (h2 :: t2) -> Forall2 R t1 t2.
 Proof. now inversion 1. Qed.
 
-Hint Resolve Forall2_cons_inv_tail.
+Hint Resolve Forall2_cons_inv_tail : List.
