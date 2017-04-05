@@ -7,13 +7,25 @@ From HaysTac Require Import LtacAliases.
     goal and performs the application. *)
 Ltac find_apply := bind enumerate_hypotheses in apply'.
 
+(** [find_eapply] looks for a hypothesis that can be [eapply]-ed to
+    your goal and performs the application. *)
+Ltac find_eapply := bind enumerate_hypotheses in eapply'.
+
 (** [find_apply_in H] looks for a hypothesis that can be [apply]-ed in
     [H] and performs the application. *)
 Ltac find_apply_in H := bind enumerate_hypotheses in ltac:(fun X => apply X in H).
 
+(** [find_eapply_in H] looks for a hypothesis that can be [eapply]-ed
+    in [H] and performs the application. *)
+Ltac find_eapply_in H := bind enumerate_hypotheses in ltac:(fun X => eapply X in H).
+
 (** [apply_in_hyp L] looks for a hypothesis [H] in which [L] can be
     [apply]-ed and performs the application. *)
 Ltac apply_in_hyp L := bind enumerate_hypotheses in ltac:(fun H => apply L in H).
+
+(** [eapply_in_hyp L] looks for a hypothesis [H] in which [L] can be
+    [eapply]-ed and performs the application. *)
+Ltac eapply_in_hyp L := bind enumerate_hypotheses in ltac:(fun H => eapply L in H).
 
 (** [check_hyp_mentions_all H tuple] returns [H] if its type mentions all
     the terms in nested tuple [tuple], fails otherwise. *)
@@ -34,6 +46,18 @@ Ltac check_hyp_mentions_all H tuple :=
 Ltac find_hyp_mentioning_all list :=
   let H := enumerate_hypotheses in
   check_hyp_mentions_all H list.
+
+(** [find_rewrite_l] and [find_rewrite_r] find a hypothesis [H] to,
+    respectively, [rewrite -> H] or [rewrite <- H] with, and perform
+    the rewrite. *)
+Ltac find_rewrite_l := bind enumerate_hypotheses in rewrite_l.
+Ltac find_rewrite_r := bind enumerate_hypotheses in rewrite_r.
+
+(** [find_erewrite_l] and [find_erewrite_r] find a hypothesis [H] to,
+    respectively, [erewrite -> H] or [erewrite <- H] with, and perform
+    the rewrite. *)
+Ltac find_erewrite_l := bind enumerate_hypotheses in erewrite_l.
+Ltac find_erewrite_r := bind enumerate_hypotheses in erewrite_r.
 
 (** [find_specialize_in H] looks for a value [v] such that is can
     [specialize (H v)]. *)
