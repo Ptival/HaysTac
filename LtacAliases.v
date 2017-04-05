@@ -12,11 +12,18 @@ Ltac exists'               H := exists H.
 Ltac generalize_dependent' H := generalize dependent H.
 Ltac idtac'                H := idtac H.
 Ltac induction'            H := induction H.
+Ltac injection'            H := injection H.
 Ltac inversion'            H := inv_clear_subst H. (* I prefer this by default *)
 Ltac rewrite_l             H := rewrite <- H.
 Ltac rewrite_r             H := rewrite -> H.
 Ltac simpl'                H := simpl in H.
 Ltac symmetry'             H := symmetry in H.
+
+Ltac in_rewrite_l_with L H := rewrite <- L in H.
+Ltac in_rewrite_r_with L H := rewrite -> L in H.
+
+Ltac with_rewrite_l_in H L := rewrite <- L in H.
+Ltac with_rewrite_r_in H L := rewrite -> L in H.
 
 (* [do'] and [repeat'] need a little extra care to be useful in
    practice: *)

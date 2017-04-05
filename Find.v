@@ -65,3 +65,10 @@ Ltac find_specialize_in H :=
   multimatch goal with
   | [ v : _ |- _ ] => specialize (H v)
   end.
+
+(** [find_specialize] looks for a hypothesis [H] and a value [v] such
+    that is can [specialize (H v)]. *)
+Ltac find_specialize :=
+  multimatch goal with
+  | [ H : _, v : _ |- _ ] => specialize (H v)
+  end.
