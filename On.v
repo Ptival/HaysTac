@@ -1,6 +1,8 @@
-
-From HaysTac Require Import Find.
-From HaysTac Require Import GetHead.
+From HaysTac Require Import
+     Bind
+     Find
+     GetHead
+.
 
 Ltac dbg flag tactic H :=
   match constr:(flag) with

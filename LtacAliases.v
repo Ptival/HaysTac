@@ -1,5 +1,7 @@
 
-From HaysTac Require Import Inv.
+From HaysTac Require Import
+     Inv
+.
 
 (* Coq's tactics are not really first-class, so aliasing them helps. *)
 Ltac apply'                H := apply H.

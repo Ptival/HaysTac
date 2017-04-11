@@ -1,7 +1,10 @@
+From Coq Require Import
+     List
+.
 
-From Coq Require Import List.
-
-From HaysTac Require Import HaysTac.
+From HaysTac Require Import
+     HaysTac
+.
 
 Import ListNotations.
 

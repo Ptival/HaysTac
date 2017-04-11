@@ -1,5 +1,6 @@
-
-From HaysTac Require Import Subst.
+From HaysTac Require Import
+     Subst
+.
 
 Ltac inv_clear H := inversion H; clear H.
 

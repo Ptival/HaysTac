@@ -1,7 +1,8 @@
-
-From HaysTac Require Import Bind.
-From HaysTac Require Import Enumerate.
-From HaysTac Require Import LtacAliases.
+From HaysTac Require Import
+     Bind
+     Enumerate
+     LtacAliases
+.
 
 (** [find_apply] looks for a hypothesis that can be [apply]-ed to your
     goal and performs the application. *)

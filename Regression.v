@@ -1,5 +1,6 @@
-
-From HaysTac Require Import HaysTac.
+From HaysTac Require Import
+     HaysTac
+.
 
 (** Regression for [find] *)
 
