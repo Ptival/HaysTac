@@ -36,3 +36,9 @@ Goal forall (A B : Type) (a : A) (b : B),
   intros.
   now on A ltac:(fun a => on B ltac:(fun B => exists (a, b))).
 Qed.
+
+Goal forall (A B : Type) (a : A) (a' : A) (a'' : A),
+    exists (x : A), x = a'.
+  intros.
+  on_head A exists'; reflexivity.
+Qed.

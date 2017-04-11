@@ -1,5 +1,6 @@
 From HaysTac Require Import
      Bind
+     Enumerate
      Find
      GetHead
 .
@@ -23,12 +24,12 @@ Ltac on := _on false.
 Ltac on' := _on true.
 
 Ltac _on_head flag type tactic :=
-  match goal with
-  | [ H : ?U |- _ ] =>
-    match get_head_type U with
-    | type => dbg flag tactic H
-    end
-  end.
+  bind enumerate_hypotheses in
+    ltac:(fun H =>
+      match get_head_hyp H with
+      | type => dbg flag tactic H
+      end
+    ).
 
 (** [on_head type tac] finds a hypothesis [H] whose type starts with
     [type] and runs [tac H]. *)
