@@ -34,7 +34,7 @@ Qed.
 Goal forall (A B : Type) (a : A) (b : B),
     exists (p : (A * B)), True.
   intros.
-  now on A ltac:(fun a => on B ltac:(fun B => exists (a, b))).
+  now on A ltac:(fun a => on B ltac:(fun b => exists (a, b))).
 Qed.
 
 Goal forall (A B : Type) (a : A) (a' : A) (a'' : A),
