@@ -3,6 +3,7 @@ coq: Makefile.coq
 
 clean: Makefile.coq
 	$(MAKE) -f Makefile.coq clean
+	rm **.{glob,v.d,vo} # cleans files even after renamings
 
 Makefile.coq: _CoqProject Makefile
 	coq_makefile -f _CoqProject -o Makefile.coq
