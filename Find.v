@@ -44,9 +44,9 @@ Ltac check_hyp_mentions_all H tuple :=
 
 (** [find_hyp_mentioning_all tuple] returns a hypothesis that mentions all
     the terms in nested tuple [tuple] if it exists, fails otherwise. *)
-Ltac find_hyp_mentioning_all list :=
+Ltac find_hyp_mentioning_all tuple :=
   let H := enumerate_hypotheses in
-  check_hyp_mentions_all H list.
+  check_hyp_mentions_all H tuple.
 
 (** [find_rewrite_l] and [find_rewrite_r] find a hypothesis [H] to,
     respectively, [rewrite -> H] or [rewrite <- H] with, and perform
