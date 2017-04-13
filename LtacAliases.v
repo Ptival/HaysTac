@@ -1,4 +1,3 @@
-
 From HaysTac Require Import
      Inv
 .
@@ -21,11 +20,26 @@ Ltac rewrite_r             H := rewrite -> H.
 Ltac simpl'                H := simpl in H.
 Ltac symmetry'             H := symmetry in H.
 
-Ltac in_rewrite_l_with L H := rewrite <- L in H.
-Ltac in_rewrite_r_with L H := rewrite -> L in H.
+(** So that you can write:
+    [on foo (in_unfold def)]
+    [on foo (in_rewrite_r EQ)]
+ *)
+Ltac in_apply      X H := apply X in H.
+Ltac in_eapply     X H := eapply X in H.
+Ltac in_rewrite_l  X H := rewrite <- X in H.
+Ltac in_rewrite_r  X H := rewrite -> X in H.
+Ltac in_simpl        H := simpl in H.
+Ltac in_unfold     X H := unfold X in H.
 
-Ltac with_rewrite_l_in H L := rewrite <- L in H.
-Ltac with_rewrite_r_in H L := rewrite -> L in H.
+(** So that you can write:
+    [on foo (rewrite_r_in H)]
+ *)
+Ltac apply_in     H X := apply X in H.
+Ltac eapply_in    H X := eapply X in H.
+Ltac rewrite_l_in H X := rewrite <- X in H.
+Ltac rewrite_r_in H X := rewrite -> X in H.
+Ltac simpl_in     H   := simpl in H.
+Ltac unfold_in    H X := unfold X in H.
 
 (* [do'] and [repeat'] need a little extra care to be useful in
    practice: *)
