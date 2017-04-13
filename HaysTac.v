@@ -2,7 +2,7 @@ From HaysTac Require Export
      Bind
      Enumerate
      Find
-     GetHead
+     Get
      Inv
      LtacAliases
      On

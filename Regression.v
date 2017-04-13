@@ -42,3 +42,8 @@ Goal forall (A B : Type) (a : A) (a' : A) (a'' : A),
   intros.
   on_head A exists'; reflexivity.
 Qed.
+
+Goal forall P (A B : Type) (a : P A B) (b : P B B), P A B.
+  intros.
+  on_head (P A) exact'.
+Qed.

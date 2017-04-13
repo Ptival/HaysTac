@@ -2,7 +2,7 @@ From HaysTac Require Import
      Bind
      Enumerate
      Find
-     GetHead
+     Get
 .
 
 Ltac dbg flag tactic H :=
