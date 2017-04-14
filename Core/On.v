@@ -5,7 +5,7 @@ From HaysTac Require Import
      Get
 .
 
-Ltac dbg flag tactic H :=
+Local Ltac dbg flag tactic H :=
   match constr:(flag) with
   | true => tactic H; idtac H
   | false => tactic H
@@ -23,7 +23,7 @@ Ltac on := _on false.
     for debugging purposes. *)
 Ltac on' := _on true.
 
-Local Ltac distinct_hyps H1 H2 := match H1 with H2 => fail 1 | _ => idtac end.
+Ltac distinct_hyps H1 H2 := match H1 with H2 => fail 1 | _ => idtac end.
 
 Local Ltac _on2 flag tuple tactic :=
   let H1 := find_hyp_mentioning_all tuple in
@@ -47,7 +47,7 @@ Ltac on3 := _on3 false.
 
 Ltac on3' := _on3 true.
 
-Ltac _on_head flag type tactic :=
+Local Ltac _on_head flag type tactic :=
   bind enumerate_hypotheses in
     ltac:(fun H =>
       match get_head_hyp H with
