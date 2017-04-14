@@ -1,18 +1,17 @@
 -R . HaysTac
 
-./Bind.v
-./Break.v
-./Enumerate.v
-./Examples.v
-./Find.v
-./Get.v
-./HaysTac.v
-./Inv.v
-./LtacAliases.v
-./On.v
-./Regression/Find.v
-./Regression/On.v
-./Subst.v
+./Core/Bind.v
+./Core/Break.v
+./Core/Enumerate.v
+./Core/Examples.v
+./Core/EqDec.v
+./Core/Find.v
+./Core/Get.v
+./Core/HaysTac.v
+./Core/Inv.v
+./Core/LtacAliases.v
+./Core/On.v
+./Core/Subst.v
 
 ./Examples/Forall2_app_inv_l.v
 ./Examples/in_flat_map.v
@@ -20,3 +19,6 @@
 
 ./Lists/List.v
 ./Lists/Regression.v
+
+./Regression/Find.v
+./Regression/On.v
