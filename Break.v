@@ -1,3 +1,21 @@
+From Coq Require Import
+     DecidableClass
+.
+
+From HaysTac Require Import
+     Subst
+.
+
+Ltac break_decide_in H :=
+  match type of H with
+  | context [ decide ?P ] => let D := fresh "DECIDE" in _decide_ P D
+  end.
+
+Ltac break_decide_in_goal :=
+  match goal with
+  | [ |- context [ decide ?P ] ] => let D := fresh "DECIDE" in _decide_ P D
+  end.
+
 Ltac break_let_pair_in H :=
   match type of H with
   | context [ let (_, _) := ?d in _ ] => destruct d eqn:?; subst_all
