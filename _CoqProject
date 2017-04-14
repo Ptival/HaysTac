@@ -9,7 +9,8 @@
 ./Inv.v
 ./LtacAliases.v
 ./On.v
-./Regression.v
+./Regression/Find.v
+./Regression/On.v
 ./Subst.v
 
 ./Lists/List.v
