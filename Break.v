@@ -1,11 +1,11 @@
 Ltac break_let_pair_in H :=
   match type of H with
-  | context [ let (_, _) := ?d in _ ] => destruct d eqn:?
+  | context [ let (_, _) := ?d in _ ] => destruct d eqn:?; subst_all
   end.
 
 Ltac break_let_pair_in_goal :=
   match goal with
-  | [ |- context [ let (_, _) := ?d in _ ] ] => destruct d eqn:?
+  | [ |- context [ let (_, _) := ?d in _ ] ] => destruct d eqn:?; subst_all
   end.
 
 Ltac break_match_in H :=
