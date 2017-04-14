@@ -23,6 +23,30 @@ Ltac on := _on false.
     for debugging purposes. *)
 Ltac on' := _on true.
 
+Local Ltac distinct_hyps H1 H2 := match H1 with H2 => fail 1 | _ => idtac end.
+
+Local Ltac _on2 flag tuple tactic :=
+  let H1 := find_hyp_mentioning_all tuple in
+  let H2 := find_hyp_mentioning_all tuple in
+  distinct_hyps H1 H2; dbg flag tactic H1 H2.
+
+Ltac on2 := _on2 false.
+
+Ltac on2' := _on2 true.
+
+Local Ltac _on3 flag tuple tactic :=
+  let H1 := find_hyp_mentioning_all tuple in
+  let H2 := find_hyp_mentioning_all tuple in
+  let H3 := find_hyp_mentioning_all tuple in
+  distinct_hyps H1 H2;
+  distinct_hyps H2 H3;
+  distinct_hyps H1 H3;
+  dbg flag tactic H1 H2 H3.
+
+Ltac on3 := _on3 false.
+
+Ltac on3' := _on3 true.
+
 Ltac _on_head flag type tactic :=
   bind enumerate_hypotheses in
     ltac:(fun H =>
