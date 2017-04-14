@@ -1,4 +1,4 @@
-From HaysTac Require Import
+From HaysTac.Core Require Import
      Subst
 .
 

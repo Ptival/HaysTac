@@ -1,13 +1,13 @@
 -R . HaysTac
 
+./HaysTac.v
+
 ./Core/Bind.v
 ./Core/Break.v
 ./Core/Enumerate.v
-./Core/Examples.v
 ./Core/EqDec.v
 ./Core/Find.v
 ./Core/Get.v
-./Core/HaysTac.v
 ./Core/Inv.v
 ./Core/LtacAliases.v
 ./Core/On.v

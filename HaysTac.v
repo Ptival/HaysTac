@@ -1,4 +1,4 @@
-From HaysTac Require Export
+From HaysTac.Core Require Export
      Bind
      Break
      Enumerate
