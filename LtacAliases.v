@@ -2,7 +2,7 @@ From HaysTac Require Import
      Inv
 .
 
-(* Coq's tactics are not really first-class, so aliasing them helps. *)
+(** Coq's tactics are not really first-class, so aliasing them helps. *)
 Ltac apply'                H := apply H.
 Ltac destruct'             H := destruct H.
 Ltac eapply'               H := eapply H.
@@ -19,6 +19,19 @@ Ltac rewrite_l             H := rewrite <- H.
 Ltac rewrite_r             H := rewrite -> H.
 Ltac simpl'                H := simpl in H.
 Ltac symmetry'             H := symmetry in H.
+
+(** [now] versions *)
+Ltac now_apply      H := now apply H.
+Ltac now_destruct   H := now destruct H.
+Ltac now_eapply     H := now eapply H.
+Ltac now_erewrite_l H := now erewrite <- H.
+Ltac now_erewrite_r H := now erewrite -> H.
+Ltac now_exists     H := now exists H.
+Ltac now_induction  H := now induction H.
+Ltac now_injection  H := now injection H.
+Ltac now_inversion  H := now inv_clear_subst H. (* I prefer this by default *)
+Ltac now_rewrite_l  H := now rewrite <- H.
+Ltac now_rewrite_r  H := now rewrite -> H.
 
 (** So that you can write:
     [on foo (in_unfold def)]
