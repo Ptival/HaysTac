@@ -14,5 +14,9 @@
 ./Regression/On.v
 ./Subst.v
 
+./Examples/Forall2_app_inv_l.v
+./Examples/in_flat_map.v
+./Examples/in_prod_iff.v
+
 ./Lists/List.v
 ./Lists/Regression.v
