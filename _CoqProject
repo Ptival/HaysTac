@@ -5,6 +5,7 @@
 ./Core/Assert.v
 ./Core/Bind.v
 ./Core/Break.v
+./Core/Decide.v
 ./Core/Enumerate.v
 ./Core/EqDec.v
 ./Core/Find.v
