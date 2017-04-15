@@ -66,3 +66,7 @@ Ltac do' n tac arg :=
 Ltac repeat' tac arg :=
   progress tac arg; repeat' tac arg
   || idtac.
+
+(** To be used with [on2] and [on3] *)
+Ltac idtac2 x y   := idtac x; idtac y.
+Ltac idtac3 x y z := idtac x; idtac y; idtac z.
