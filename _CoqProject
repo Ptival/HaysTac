@@ -22,5 +22,6 @@
 ./Lists/List.v
 ./Lists/Regression.v
 
+./Regression/Enumerate.v
 ./Regression/Find.v
 ./Regression/On.v
