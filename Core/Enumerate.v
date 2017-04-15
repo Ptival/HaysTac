@@ -22,3 +22,11 @@ Ltac enumerate_numbers_starting_from n :=
 
 (** [enumerate_numbers] returns, in order, [0], [1], etc. *)
 Ltac enumerate_numbers := enumerate_numbers_starting_from 0.
+
+(** [enumerate_numbers_up_to n] returns, in order, [0], [1], etc., [n] *)
+Ltac enumerate_numbers_up_to limit :=
+  let n := enumerate_numbers in
+  match n with
+  | S limit => fail 2 (* fails the multimatch in enumerate_numbers *)
+  | _ => n
+  end.
