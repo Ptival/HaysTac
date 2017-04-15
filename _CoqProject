@@ -2,6 +2,7 @@
 
 ./HaysTac.v
 
+./Core/Assert.v
 ./Core/Bind.v
 ./Core/Break.v
 ./Core/Enumerate.v

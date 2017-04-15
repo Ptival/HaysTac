@@ -1,4 +1,5 @@
 From HaysTac.Core Require Export
+     Assert
      Bind
      Break
      Enumerate
