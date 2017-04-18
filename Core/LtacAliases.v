@@ -15,6 +15,7 @@ Ltac idtac'                H := idtac H.
 Ltac induction'            H := induction H.
 Ltac injection'            H := injection H.
 Ltac inversion'            H := inv_clear_subst H. (* I prefer this by default *)
+Ltac revert'               H := revert H.
 Ltac rewrite_l             H := rewrite <- H.
 Ltac rewrite_r             H := rewrite -> H.
 Ltac simpl'                H := simpl in H.
