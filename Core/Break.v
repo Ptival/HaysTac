@@ -3,6 +3,7 @@ From Coq Require Import
 .
 
 From HaysTac.Core Require Import
+     Enumerate
      Subst
 .
 
@@ -31,6 +32,10 @@ Ltac break_match_in H :=
   | context [ match ?d with _ => _ end ] => destruct d eqn:?
   end.
 
+Ltac break_match_in_hyp :=
+  let H := enumerate_hypotheses in
+  break_match_in H.
+
 Ltac break_match_in_goal :=
   match goal with
   | [ |- context [ match ?d with _ => _ end ] ] => destruct d eqn:?
@@ -40,6 +45,10 @@ Ltac break_if_in H :=
   match type of H with
   | context [ if ?d then _ else _ ] => destruct d eqn:?
   end.
+
+Ltac break_if_in_hyp :=
+  let H := enumerate_hypotheses in
+  break_if_in H.
 
 Ltac break_if_in_goal :=
   match goal with
