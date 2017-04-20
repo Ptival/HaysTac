@@ -23,7 +23,7 @@ Ltac break_let_pair_in H :=
   end.
 
 Ltac break_let_pair_in_hyp :=
-  let H := enumerate_hypotheses in
+  let H := enumerate_hyps in
   break_let_pair_in H.
 
 Ltac break_let_pair_in_goal :=
@@ -37,7 +37,7 @@ Ltac break_match_in H :=
   end.
 
 Ltac break_match_in_hyp :=
-  let H := enumerate_hypotheses in
+  let H := enumerate_hyps in
   break_match_in H.
 
 Ltac break_match_in_goal :=
@@ -51,7 +51,7 @@ Ltac break_if_in H :=
   end.
 
 Ltac break_if_in_hyp :=
-  let H := enumerate_hypotheses in
+  let H := enumerate_hyps in
   break_if_in H.
 
 Ltac break_if_in_goal :=

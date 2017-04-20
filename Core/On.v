@@ -47,7 +47,7 @@ Ltac on3 := _on3 false.
 Ltac on3' := _on3 true.
 
 Local Ltac _on_head flag type tactic :=
-  let H := enumerate_hypotheses in
+  let H := enumerate_hyps in
   assert_same ltac:(get_head_hyp H) type;
   dbg flag tactic H.
 
@@ -60,9 +60,9 @@ Ltac on_head := _on_head false.
 Ltac on_head' := _on_head true.
 
 Local Ltac _on_head2 flag type tactic :=
-  let H1 := enumerate_hypotheses in
+  let H1 := enumerate_hyps in
   assert_same ltac:(get_head_hyp H1) type;
-  let H2 := enumerate_hypotheses in
+  let H2 := enumerate_hyps in
   assert_same ltac:(get_head_hyp H2) type;
   assert_distinct H1 H2;
   dbg flag tactic H1 H2.
@@ -72,11 +72,11 @@ Ltac on_head2 := _on_head2 false.
 Ltac on_head2' := _on_head2 true.
 
 Local Ltac _on_head3 flag type tactic :=
-  let H1 := enumerate_hypotheses in
+  let H1 := enumerate_hyps in
   assert_same ltac:(get_head_hyp H1) type;
-  let H2 := enumerate_hypotheses in
+  let H2 := enumerate_hyps in
   assert_same ltac:(get_head_hyp H2) type;
-  let H3 := enumerate_hypotheses in
+  let H3 := enumerate_hyps in
   assert_same ltac:(get_head_hyp H3) type;
   assert_distinct H1 H2;
   assert_distinct H2 H3;
