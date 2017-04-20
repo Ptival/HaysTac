@@ -22,6 +22,10 @@ Ltac break_let_pair_in H :=
   | context [ let (_, _) := ?d in _ ] => destruct d eqn:?; subst_all
   end.
 
+Ltac break_let_pair_in_hyp :=
+  let H := enumerate_hypotheses in
+  break_let_pair_in H.
+
 Ltac break_let_pair_in_goal :=
   match goal with
   | [ |- context [ let (_, _) := ?d in _ ] ] => destruct d eqn:?; subst_all
