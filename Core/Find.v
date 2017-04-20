@@ -21,13 +21,13 @@ Ltac find_apply_in H := bind enumerate_hyps in ltac:(fun X => apply X in H).
     in [H] and performs the application. *)
 Ltac find_eapply_in H := bind enumerate_hyps in ltac:(fun X => eapply X in H).
 
-(** [apply_in_hyp L] looks for a hypothesis [H] in which [L] can be
-    [apply]-ed and performs the application. *)
-Ltac apply_in_hyp L := bind enumerate_hyps in ltac:(fun H => apply L in H).
+(** [find_apply_in_hyp L] looks for a hypothesis [H] in which [L] can
+    be [apply]-ed and performs the application. *)
+Ltac find_apply_in_hyp L := bind enumerate_hyps in in_apply L.
 
-(** [eapply_in_hyp L] looks for a hypothesis [H] in which [L] can be
-    [eapply]-ed and performs the application. *)
-Ltac eapply_in_hyp L := bind enumerate_hyps in ltac:(fun H => eapply L in H).
+(** [find_eapply_in_hyp L] looks for a hypothesis [H] in which [L] can
+    be [eapply]-ed and performs the application. *)
+Ltac find_eapply_in_hyp L := bind enumerate_hyps in in_eapply L.
 
 (** [check_hyp_mentions_all H tuple] returns [H] if its type mentions all
     the terms in nested tuple [tuple], fails otherwise. *)
