@@ -1,5 +1,5 @@
 From HaysTac.Core Require Import
-     Inv
+     Subst
 .
 
 (** Coq's tactics are not really first-class, so aliasing them helps. *)
