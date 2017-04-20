@@ -2,6 +2,7 @@ From HaysTac.Core Require Import
      Bind
      Enumerate
      LtacAliases
+     With
 .
 
 (** [find_apply] looks for a hypothesis that can be [apply]-ed to your
@@ -59,6 +60,16 @@ Ltac find_rewrite_r := bind enumerate_hyps in rewrite_r.
     the rewrite. *)
 Ltac find_erewrite_l := bind enumerate_hyps in erewrite_l.
 Ltac find_erewrite_r := bind enumerate_hyps in erewrite_r.
+
+Ltac find_rewrite_l_in_hyp :=
+  with_2_hyps ltac:(fun H1 H2 => rewrite <- H1 in H2).
+Ltac find_rewrite_r_in_hyp :=
+  with_2_hyps ltac:(fun H1 H2 => rewrite -> H1 in H2).
+
+Ltac find_erewrite_l_in_hyp :=
+  with_2_hyps ltac:(fun H1 H2 => erewrite <- H1 in H2).
+Ltac find_erewrite_r_in_hyp :=
+  with_2_hyps ltac:(fun H1 H2 => erewrite -> H1 in H2).
 
 (** [find_specialize_in H] looks for a value [v] such that is can
     [specialize (H v)]. *)
