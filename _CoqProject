@@ -14,6 +14,7 @@
 ./Core/LtacAliases.v
 ./Core/On.v
 ./Core/Subst.v
+./Core/With.v
 
 ./Examples/Forall2_app_inv_l.v
 ./Examples/in_flat_map.v
