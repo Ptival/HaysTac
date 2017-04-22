@@ -21,7 +21,7 @@ Proof.
   on list induction'; simpl; split; intros.
   + contradiction.
   + on @ex ltac:(fun H => repeat (destruct H)).
-  + on_head In ltac:(in_apply in_app_or).
+  + on_head In ltac:(apply_in_selected in_app_or).
     on_head or destruct'.
     * eauto.
     * on_head In find_apply_in.

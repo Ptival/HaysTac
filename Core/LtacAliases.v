@@ -2,58 +2,68 @@ From HaysTac.Core Require Import
      Subst
 .
 
-(** Coq's tactics are not really first-class, so aliasing them helps. *)
-Ltac apply'                H := apply H.
-Ltac destruct'             H := destruct H.
-Ltac eapply'               H := eapply H.
-Ltac erewrite_l            H := erewrite <- H.
-Ltac erewrite_r            H := erewrite -> H.
-Ltac exact'                H := exact H.
-Ltac exists'               H := exists H.
-Ltac generalize_dependent' H := generalize dependent H.
-Ltac idtac'                H := idtac H.
-Ltac induction'            H := induction H.
-Ltac injection'            H := injection H.
-Ltac inversion'            H := inv_clear_subst H. (* I prefer this by default *)
-Ltac revert'               H := revert H.
-Ltac rewrite_l             H := rewrite <- H.
-Ltac rewrite_r             H := rewrite -> H.
-Ltac simpl'                H := simpl in H.
-Ltac symmetry'             H := symmetry in H.
+(** Coq's tactics are not really first-class, so aliasing them helps.
+    Eta-expanding makes company-coq's auto-completion more pleasant,
+    as it does not attemp to fill in the H. *)
+Ltac apply'                := fun H => apply H.
+Ltac destruct'             := fun H => destruct H.
+Ltac eapply'               := fun H => eapply H.
+Ltac erewrite_l            := fun H => erewrite <- H.
+Ltac erewrite_r            := fun H => erewrite -> H.
+Ltac exact'                := fun H => exact H.
+Ltac exists'               := fun H => exists H.
+Ltac generalize_dependent' := fun H => generalize dependent H.
+Ltac idtac'                := fun H => idtac H.
+Ltac induction'            := fun H => induction H.
+Ltac injection'            := fun H => injection H.
+Ltac inversion'            := fun H => inv_clear_subst H. (* I prefer this by default *)
+Ltac revert'               := fun H => revert H.
+Ltac rewrite_l             := fun H => rewrite <- H.
+Ltac rewrite_r             := fun H => rewrite -> H.
+Ltac setoid_rewrite_l      := fun H => setoid_rewrite <- H.
+Ltac setoid_rewrite_r      := fun H => setoid_rewrite -> H.
+Ltac simpl'                := fun H => simpl in H.
+Ltac symmetry'             := fun H => symmetry in H.
 
-(** [now] versions *)
-Ltac now_apply      H := now apply H.
-Ltac now_destruct   H := now destruct H.
-Ltac now_eapply     H := now eapply H.
-Ltac now_erewrite_l H := now erewrite <- H.
-Ltac now_erewrite_r H := now erewrite -> H.
-Ltac now_exists     H := now exists H.
-Ltac now_induction  H := now induction H.
-Ltac now_injection  H := now injection H.
-Ltac now_inversion  H := now inv_clear_subst H. (* I prefer this by default *)
-Ltac now_rewrite_l  H := now rewrite <- H.
-Ltac now_rewrite_r  H := now rewrite -> H.
+(** For tactics with 2 arguments, we adopt the following convention:
+    [action A1 in A2] becomes:
 
-(** So that you can write:
-    [on foo (in_unfold def)]
-    [on foo (in_rewrite_r EQ)]
+    - [action_in_selected A1] for [fun A2 => action A1 in A2]
+
+    - [action_selected_in A2] for [fun A1 => action A1 in A2]
+
+    This allows writing:
+
+    - on selection ltac:(in_selected_apply my_lemma)
+
+    - on selection ltac:(apply_selected_in my_hypothesis)
+
+    Note that the latter is using names, so probably discouraged.
  *)
-Ltac in_apply      X H := apply X in H.
-Ltac in_eapply     X H := eapply X in H.
-Ltac in_rewrite_l  X H := rewrite <- X in H.
-Ltac in_rewrite_r  X H := rewrite -> X in H.
-Ltac in_simpl        H := simpl in H.
-Ltac in_unfold     X H := unfold X in H.
 
-(** So that you can write:
-    [on foo (rewrite_r_in H)]
- *)
-Ltac apply_in     H X := apply X in H.
-Ltac eapply_in    H X := eapply X in H.
-Ltac rewrite_l_in H X := rewrite <- X in H.
-Ltac rewrite_r_in H X := rewrite -> X in H.
-Ltac simpl_in     H   := simpl in H.
-Ltac unfold_in    H X := unfold X in H.
+Ltac apply_in_selected            A1 := fun A2 => apply A1 in A2.
+Ltac apply_selected_in            A2 := fun A1 => apply A1 in A2.
+
+Ltac eapply_in_selected           A1 := fun A2 => eapply A1 in A2.
+Ltac eapply_selected_in           A2 := fun A1 => eapply A1 in A2.
+
+Ltac rewrite_l_in_selected        A1 := fun A2 => rewrite <- A1 in A2.
+Ltac rewrite_l_selected_in        A2 := fun A1 => rewrite <- A1 in A2.
+Ltac rewrite_r_in_selected        A1 := fun A2 => rewrite -> A1 in A2.
+Ltac rewrite_r_selected_in        A2 := fun A1 => rewrite -> A1 in A2.
+
+Ltac erewrite_l_in_selected       A1 := fun A2 => erewrite <- A1 in A2.
+Ltac erewrite_l_selected_in       A2 := fun A1 => erewrite <- A1 in A2.
+Ltac erewrite_r_in_selected       A1 := fun A2 => erewrite -> A1 in A2.
+Ltac erewrite_r_selected_in       A2 := fun A1 => erewrite -> A1 in A2.
+
+Ltac setoid_rewrite_l_in_selected A1 := fun A2 => setoid_rewrite <- A1 in A2.
+Ltac setoid_rewrite_l_selected_in A2 := fun A1 => setoid_rewrite <- A1 in A2.
+Ltac setoid_rewrite_r_in_selected A1 := fun A2 => setoid_rewrite -> A1 in A2.
+Ltac setoid_rewrite_r_selected_in A2 := fun A1 => setoid_rewrite -> A1 in A2.
+
+Ltac unfold_in_selected           A1 := fun A2 => unfold A1 in A2.
+Ltac unfold_selected_in           A2 := fun A1 => unfold A1 in A2.
 
 (* [do'] and [repeat'] need a little extra care to be useful in
    practice: *)

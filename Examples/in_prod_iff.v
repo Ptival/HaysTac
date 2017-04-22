@@ -21,9 +21,9 @@ Proof.
   split.
   - on (list A) induction'; simpl; intros.
     + intuition.
-    + on In ltac:(in_apply in_app_or).
+    + on In ltac:(apply_in_selected in_app_or).
       on @or destruct'.
-      * on_head In ltac:(in_apply in_map_iff).
+      * on_head In ltac:(apply_in_selected in_map_iff).
         on @ex destruct'.
         on @and destruct'.
         on_head @eq inversion'.
