@@ -8,6 +8,7 @@ From HaysTac.Core Require Import
 Ltac apply'                := fun H => apply H.
 Ltac destruct'             := fun H => destruct H.
 Ltac eapply'               := fun H => eapply H.
+Ltac edestruct'            := fun H => edestruct H.
 Ltac erewrite_l            := fun H => erewrite <- H.
 Ltac erewrite_r            := fun H => erewrite -> H.
 Ltac exact'                := fun H => exact H.
