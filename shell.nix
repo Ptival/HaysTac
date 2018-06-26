@@ -2,8 +2,8 @@
 nixpkgs.stdenv.mkDerivation {
   name = "HaysTac";
   buildInputs = (with nixpkgs; [
-    coq_8_6
-  ] ++ (with coqPackages_8_6; [
+    coq_8_7
+  ] ++ (with coqPackages_8_7; [
     #coq-ext-lib
   ]));
   shellHook = ''
